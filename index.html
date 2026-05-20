@@ -184,7 +184,7 @@
                 <circle cx="40" cy="40" r="4" fill="#2d6a2d"/>
               </svg>
             </span>
-            <span data-flip="cycled">0</span> km cycled so far
+            <span id="live-cycled" data-flip="cycled">0</span> km cycled so far
           </a>
         </p>
       </div>
@@ -236,6 +236,7 @@
     var raisedEl = document.getElementById('live-raised');
     var goalEl = document.getElementById('live-goal');
     var fillEl = document.getElementById('progress-fill');
+    var cycledEl = document.getElementById('live-cycled');
     var donationsEl = document.getElementById('live-donations');
     var listEl = document.getElementById('donation-list');
 
@@ -251,6 +252,9 @@
         if (data.targetAmount > 0 && fillEl) {
           var pct = Math.min(100, (data.totalAmount / data.targetAmount) * 100);
           fillEl.style.width = pct + '%';
+        }
+        if (cycledEl) {
+          cycledEl.textContent = Math.round(data.totalAmount * (59 / 100));
         }
         if (data.recentDonations && data.recentDonations.length > 0 && donationsEl && listEl) {
           donationsEl.style.display = 'block';

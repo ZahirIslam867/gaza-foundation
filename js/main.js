@@ -188,7 +188,6 @@ function initFlipCounters() {
     observer.observe(el);
   }
 
-  initFlip(cycledEl, KM_CYCLED);
 }
 
 // =============================================================================
