@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Donate to Gaza Fundraising Cause — support displaced families in Gaza through MAP (Medical Aid for Palestinians).">
+  <title>Donate — Gaza Fundraising Cause</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-donate">
+
+  <canvas id="ripple-canvas"></canvas>
+
+  <div class="page-content">
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav__title">Gaza Fundraising Cause</a>
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html" class="nav__link">Home</a></li>
+      <li><a href="about.html" class="nav__link">About</a></li>
+      <li><a href="donate.html" class="nav__link nav__link--active nav__donate">Donate now</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="page-hero" id="hero-donate">
+      <div class="page-hero__bg" style="background-image: url('assets/images/donate-hero-placeholder.jpg');"></div>
+      <div class="page-hero__content">
+        <h1 class="heading-large">Make a difference<br>today.</h1>
+        <p class="hero__sub">It takes less than two minutes.</p>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <p class="section__label fade-up">How it works</p>
+      <ol class="steps">
+        <li class="steps__item fade-up fade-up--delay-1">
+          <span class="steps__num">1</span>
+          <div class="steps__content">
+            <h3>Click donate below</h3>
+            <p>It opens our JustGiving page in a new tab.</p>
+          </div>
+        </li>
+        <li class="steps__item fade-up fade-up--delay-2">
+          <span class="steps__num">2</span>
+          <div class="steps__content">
+            <h3>Give what you can</h3>
+            <p>Every £100 means another cycle of Gaza's perimeter.</p>
+          </div>
+        </li>
+        <li class="steps__item fade-up fade-up--delay-3">
+          <span class="steps__num">3</span>
+          <div class="steps__content">
+            <h3>Share with one person</h3>
+            <p>Tell someone about this. It makes a real difference.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section section--light-gray" id="money-breakdown">
+      <p class="section__label fade-up">Where your money goes</p>
+      <ul class="aid-list" style="max-width: 600px; margin: 0 auto;">
+        <li class="aid-item fade-up fade-up--delay-1">
+          <div class="aid-item__icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2L2 20h20L12 2z"/>
+              <path d="M12 2v18"/>
+              <path d="M2 20h20"/>
+            </svg>
+          </div>
+          <div class="aid-item__content">
+            <h3>Shelter</h3>
+            <p>Safe places for displaced families.</p>
+          </div>
+        </li>
+        <li class="aid-item fade-up fade-up--delay-2">
+          <div class="aid-item__icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10"/>
+              <path d="M2 12h20"/>
+              <path d="M4 8c0-2 3-4 8-4s8 2 8 4"/>
+              <path d="M8 16c0 1 1.5 3 4 3s4-2 4-3"/>
+            </svg>
+          </div>
+          <div class="aid-item__content">
+            <h3>Food</h3>
+            <p>Nutritious meals for those who have lost everything.</p>
+          </div>
+        </li>
+        <li class="aid-item fade-up fade-up--delay-3">
+          <div class="aid-item__icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2C8 10 5 13 5 17c0 3.9 3.1 7 7 7s7-3.1 7-7c0-4-3-7-7-15z"/>
+            </svg>
+          </div>
+          <div class="aid-item__content">
+            <h3>Clean Water</h3>
+            <p>Access to clean water to save lives.</p>
+          </div>
+        </li>
+        <li class="aid-item fade-up fade-up--delay-4">
+          <div class="aid-item__icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="9" y="2" width="6" height="20" rx="1"/>
+              <rect x="2" y="9" width="20" height="6" rx="1"/>
+            </svg>
+          </div>
+          <div class="aid-item__content">
+            <h3>Medical Aid</h3>
+            <p>Essential healthcare and emergency supplies.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section--cta" id="donate-action">
+      <div class="fade-up">
+        <div class="wheel-spinner wheel-spinner--red wheel-spinner--hover-pause" style="margin: 0 auto var(--space-md);">
+          <svg viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="36"/>
+            <line x1="40" y1="4" x2="40" y2="76"/>
+            <line x1="4" y1="40" x2="76" y2="40"/>
+            <line x1="14.5" y1="14.5" x2="65.5" y2="65.5"/>
+            <line x1="65.5" y1="14.5" x2="14.5" y2="65.5"/>
+            <circle cx="40" cy="40" r="4" fill="#CE1126"/>
+          </svg>
+        </div>
+        <h2 class="heading-medium" style="margin-bottom: var(--space-md)">Ready?</h2>
+        <a href="https://www.justgiving.com/page/gaza-fundraising-cause" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--donate-large">Donate on JustGiving</a>
+        <p class="donate-url">
+          Or copy the link:<br>
+          <a href="https://www.justgiving.com/page/gaza-fundraising-cause" target="_blank" rel="noopener noreferrer">www.justgiving.com/page/gaza-fundraising-cause</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="share" id="share">
+      <p class="share__text">Tell someone about this.</p>
+      <a href="https://instagram.com/gaza_fundraising_cause_whsa" target="_blank" rel="noopener noreferrer" class="share__handle">
+        @gaza_fundraising_cause_whsa
+      </a>
+    </section>
+
+    <!-- Trust bar -->
+    <section class="trust-section" id="trust-donate">
+      <div class="trust-bar fade-up">
+        <img src="assets/images/map-logo.svg" alt="Medical Aid for Palestinians" class="trust-bar__logo" width="180" height="55">
+        <div class="trust-bar__text">
+          <p class="trust-bar__headline">In partnership with <strong>Medical Aid for Palestinians</strong></p>
+          <p class="trust-bar__detail">Registered Charity No. 1045315 &middot; <a href="https://www.map.org.uk" target="_blank" rel="noopener noreferrer" class="trust-bar__link">map.org.uk</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer-bar">
+    <div class="footer-bar__text">Donate today. Change lives.</div>
+  </div>
+
+  <footer class="footer">
+    <span>Gaza Fundraising Cause. Woodhouse students. 2026.</span>
+    <div class="footer__links">
+      <a href="https://instagram.com/gaza_fundraising_cause_whsa" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.justgiving.com/page/gaza-fundraising-cause" target="_blank" rel="noopener noreferrer">JustGiving</a>
+    </div>
+  </footer>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

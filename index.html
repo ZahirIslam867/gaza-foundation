@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gaza Fundraising Cause — Woodhouse students fundraising for MAP (Medical Aid for Palestinians). Support displaced families in Gaza.">
+  <title>Gaza Fundraising Cause</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-home">
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav__title">Gaza Fundraising Cause</a>
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html" class="nav__link nav__link--active">Home</a></li>
+      <li><a href="about.html" class="nav__link">About</a></li>
+      <li><a href="donate.html" class="nav__link nav__donate">Donate now</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="hero hero--home" id="hero">
+      <div class="hero__layout">
+        <div class="hero__left">
+          <!-- Particle field canvas sits behind all hero left content -->
+          <div class="hero__particles" id="particle-field"></div>
+          <p class="hero-headline">We are a</p>
+          <h1 class="hero-headline-big distressed">CHARITY</h1>
+          <div class="brushstroke">
+            We need your help to support&nbsp;<span class="text-red">displaced families in Gaza</span>
+          </div>
+          <p class="hero-body">
+            Thousands of families in Gaza have been forced to flee their homes. They need our support to survive.
+          </p>
+          <a href="https://www.justgiving.com/page/gaza-fundraising-cause" target="_blank" rel="noopener noreferrer" class="hero__cta">Donate today</a>
+        </div>
+        <div class="hero__right" id="hero-right">
+          <div class="hero__right-bg" style="background-image: url('assets/images/Ceasefire-photo.png');"></div>
+          <div class="hero__right-content">
+            <p class="hero__text-overlay">Help those in need now.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== AID + FUNDRAISING + MAP ========== -->
+    <section class="section section--light-gray" id="what-we-do">
+      <p class="section__label fade-up">What we do</p>
+      <div class="cols-3 fade-up">
+        <!-- Left: Aid Categories -->
+        <div>
+          <ul class="aid-list">
+            <li class="aid-item">
+              <div class="aid-item__icon">
+                <!-- Tent icon -->
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2L2 20h20L12 2z"/>
+                  <path d="M12 2v18"/>
+                  <path d="M2 20h20"/>
+                </svg>
+              </div>
+              <div class="aid-item__content">
+                <h3>Providing Shelter</h3>
+                <p>Safe places for displaced families.</p>
+              </div>
+            </li>
+            <li class="aid-item">
+              <div class="aid-item__icon">
+                <!-- Bowl/Food icon -->
+                <svg viewBox="0 0 24 24">
+                  <path d="M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10"/>
+                  <path d="M2 12h20"/>
+                  <path d="M4 8c0-2 3-4 8-4s8 2 8 4"/>
+                  <path d="M8 16c0 1 1.5 3 4 3s4-2 4-3"/>
+                </svg>
+              </div>
+              <div class="aid-item__content">
+                <h3>Providing Food</h3>
+                <p>Nutritious meals for those who have lost everything.</p>
+              </div>
+            </li>
+            <li class="aid-item">
+              <div class="aid-item__icon">
+                <!-- Water drop icon -->
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C8 10 5 13 5 17c0 3.9 3.1 7 7 7s7-3.1 7-7c0-4-3-7-7-15z"/>
+                </svg>
+              </div>
+              <div class="aid-item__content">
+                <h3>Clean Water</h3>
+                <p>Access to clean water to save lives.</p>
+              </div>
+            </li>
+            <li class="aid-item">
+              <div class="aid-item__icon">
+                <!-- Medical cross icon -->
+                <svg viewBox="0 0 24 24">
+                  <rect x="9" y="2" width="6" height="20" rx="1"/>
+                  <rect x="2" y="9" width="20" height="6" rx="1"/>
+                </svg>
+              </div>
+              <div class="aid-item__content">
+                <h3>Medical Aid</h3>
+                <p>Essential healthcare and emergency supplies.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Centre: Fundraising Mechanic -->
+        <div class="fundraising-mechanic">
+          <div class="fundraising-mechanic__label">For every £100 raised</div>
+          <div class="fundraising-mechanic__banner">We will cycle</div>
+          <div class="fundraising-mechanic__action">
+            the perimeter of <span class="text-red">GAZA</span>
+          </div>
+          <!-- Spinning wheel SVG -->
+          <div class="wheel-spinner wheel-spinner--red" style="margin-top: var(--space-md);">
+            <svg viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="36"/>
+              <line x1="40" y1="4" x2="40" y2="76"/>
+              <line x1="4" y1="40" x2="76" y2="40"/>
+              <line x1="14.5" y1="14.5" x2="65.5" y2="65.5"/>
+              <line x1="65.5" y1="14.5" x2="14.5" y2="65.5"/>
+              <circle cx="40" cy="40" r="4" fill="#CE1126"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right: Cyclist on Gaza Strip Map -->
+        <div class="track-container">
+          <p class="track-container__label">Perimeter challenge</p>
+          <div class="track-canvas" id="three-track"></div>
+          <p class="track-container__caption">
+            <span class="text-red">15</span> of <span class="text-green">2000</span> goal &middot; <span class="text-red">8</span> km cycled so far
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TRUST BAR ========== -->
+    <section class="trust-section" id="trust">
+      <div class="trust-bar fade-up">
+        <img src="assets/images/map-logo.svg" alt="Medical Aid for Palestinians" class="trust-bar__logo" width="180" height="55">
+        <div class="trust-bar__text">
+          <p class="trust-bar__headline">In partnership with <strong>Medical Aid for Palestinians</strong></p>
+          <p class="trust-bar__detail">Registered Charity No. 1045315 &middot; <a href="https://www.map.org.uk" target="_blank" rel="noopener noreferrer" class="trust-bar__link">map.org.uk</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROGRESS ========== -->
+    <section class="section" id="progress">
+      <p class="section__label fade-up">Our progress</p>
+      <div class="progress fade-up">
+        <div class="progress__stats">
+          <a href="https://www.justgiving.com/page/gaza-fundraising-cause" target="_blank" rel="noopener noreferrer" class="progress__link">
+            <span class="progress__raised">£<span id="live-raised" data-flip="raised">0</span> raised</span>
+          </a>
+          <a href="https://www.justgiving.com/page/gaza-fundraising-cause" target="_blank" rel="noopener noreferrer" class="progress__link">
+            <span class="progress__goal">of £<span id="live-goal" data-counter="2000">0</span> goal</span>
+          </a>
+        </div>
+        <a href="https://www.justgiving.com/page/gaza-fundraising-cause" target="_blank" rel="noopener noreferrer" class="progress__link" style="display: block;">
+          <div class="progress__bar">
+            <div class="progress__fill" id="progress-fill" data-progress="0"></div>
+          </div>
+        </a>
+        <p class="progress__km">
+          <a href="https://www.justgiving.com/page/gaza-fundraising-cause" target="_blank" rel="noopener noreferrer" class="progress__link" style="display: inline-flex; align-items: center; gap: 6px;">
+            <span class="wheel-spinner wheel-spinner--green" style="width: 20px; height: 20px;">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="36"/>
+                <line x1="40" y1="4" x2="40" y2="76"/>
+                <line x1="4" y1="40" x2="76" y2="40"/>
+                <line x1="14.5" y1="14.5" x2="65.5" y2="65.5"/>
+                <line x1="65.5" y1="14.5" x2="14.5" y2="65.5"/>
+                <circle cx="40" cy="40" r="4" fill="#2d6a2d"/>
+              </svg>
+            </span>
+            <span data-flip="cycled">0</span> km cycled so far
+          </a>
+        </p>
+      </div>
+
+      <!-- Live donations -->
+      <div class="live-donations fade-up fade-up--delay-1" id="live-donations" style="display: none;">
+        <p class="section__label" style="margin-top: var(--space-lg);">Recent donations</p>
+        <ul class="donation-list" id="donation-list"></ul>
+      </div>
+    </section>
+
+    <!-- ========== HEART CTA ========== -->
+    <section class="section section--light-gray section--hands" id="cta-heart">
+      <div class="cta-heart__hands" id="three-hands"></div>
+      <div class="cta-heart fade-up">
+        <div class="cta-heart__icon">
+          <svg viewBox="0 0 48 48">
+            <path d="M24 42C24 42 6 28 6 16C6 10 10 6 16 6C20 6 24 10 24 14C24 10 28 6 32 6C38 6 42 10 42 16C42 28 24 42 24 42Z"/>
+          </svg>
+        </div>
+        <div class="cta-heart__headline">Your donation makes a real difference</div>
+        <p class="cta-heart__text">
+          Together, we can bring hope, relief and dignity to those who need it most.
+        </p>
+        <a href="https://www.justgiving.com/page/gaza-fundraising-cause" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Donate today</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Green footer bar -->
+  <div class="footer-bar">
+    <div class="footer-bar__text">Donate today. Change lives.</div>
+  </div>
+
+  <footer class="footer">
+    <span>Gaza Fundraising Cause. Woodhouse students. 2026.</span>
+    <div class="footer__links">
+      <a href="https://instagram.com/gaza_fundraising_cause_whsa" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.justgiving.com/page/gaza-fundraising-cause" target="_blank" rel="noopener noreferrer">JustGiving</a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Live JustGiving tracker -->
+  <script>
+  (function () {
+    var raisedEl = document.getElementById('live-raised');
+    var goalEl = document.getElementById('live-goal');
+    var fillEl = document.getElementById('progress-fill');
+    var donationsEl = document.getElementById('live-donations');
+    var listEl = document.getElementById('donation-list');
+
+    fetch('/.netlify/functions/justgiving')
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data.totalAmount > 0 && raisedEl) {
+          raisedEl.textContent = data.totalAmount;
+        }
+        if (data.targetAmount > 0 && goalEl) {
+          goalEl.textContent = data.targetAmount;
+        }
+        if (data.targetAmount > 0 && fillEl) {
+          var pct = Math.min(100, (data.totalAmount / data.targetAmount) * 100);
+          fillEl.style.width = pct + '%';
+        }
+        if (data.recentDonations && data.recentDonations.length > 0 && donationsEl && listEl) {
+          donationsEl.style.display = 'block';
+          data.recentDonations.slice(0, 5).forEach(function (d) {
+            var li = document.createElement('li');
+            li.className = 'donation-list__item';
+            li.innerHTML =
+              '<span class="donation-list__name">' + esc(d.displayName) + '</span>' +
+              '<span class="donation-list__msg">' + esc(d.message) + '</span>';
+            listEl.appendChild(li);
+          });
+        }
+      })
+      .catch(function () {});
+    function esc(s) {
+      if (!s) return '';
+      var d = document.createElement('div');
+      d.appendChild(document.createTextNode(s));
+      return d.innerHTML;
+    }
+  })();
+  </script>
+</body>
+</html>
