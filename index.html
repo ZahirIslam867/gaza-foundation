@@ -261,7 +261,9 @@
           data.recentDonations.slice(0, 5).forEach(function (d) {
             var li = document.createElement('li');
             li.className = 'donation-list__item';
+            var amountHtml = d.amount > 0 ? '<span class="donation-list__amount">£' + (d.amount / 100).toFixed(2) + '</span>' : '';
             li.innerHTML =
+              amountHtml +
               '<span class="donation-list__name">' + esc(d.displayName) + '</span>' +
               '<span class="donation-list__msg">' + esc(d.message) + '</span>';
             listEl.appendChild(li);

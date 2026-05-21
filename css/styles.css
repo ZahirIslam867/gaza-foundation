@@ -1843,16 +1843,24 @@ h1, h2, h3, h4 {
   border-bottom: none;
 }
 
+.donation-list__amount {
+  font-weight: 700;
+  font-size: 13px;
+  color: #000;
+  flex-shrink: 0;
+  min-width: 52px;
+}
+
 .donation-list__name {
   font-weight: 600;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.85);
+  color: #000;
   flex-shrink: 0;
 }
 
 .donation-list__msg {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(0, 0, 0, 0.55);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
