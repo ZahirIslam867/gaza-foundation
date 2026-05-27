@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Admin panel — manage cycling proof for Gaza Fundraising Cause.">
+  <title>Admin — Gaza Fundraising Cause</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .admin-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .admin-gate--hidden {
+      display: none;
+    }
+
+    .admin-gate__box {
+      text-align: center;
+      padding: var(--space-xl);
+      max-width: 400px;
+    }
+
+    .admin-gate__lock {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto var(--space-md);
+      color: var(--accent);
+    }
+
+    .admin-gate__lock svg {
+      display: block;
+    }
+
+    .admin-gate__title {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      margin-bottom: var(--space-xs);
+      color: var(--text);
+    }
+
+    .admin-gate__sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: var(--space-lg);
+    }
+
+    .admin-gate__input {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: var(--font-body);
+      font-size: 16px;
+      border: 1px solid var(--border);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s var(--ease-out);
+      margin-bottom: var(--space-sm);
+    }
+
+    .admin-gate__input:focus {
+      border-color: var(--accent);
+    }
+
+    .admin-gate__error {
+      font-size: 13px;
+      color: var(--accent);
+      min-height: 20px;
+      margin-bottom: var(--space-sm);
+    }
+
+    .admin-content {
+      display: none;
+    }
+
+    .admin-content--visible {
+      display: block;
+    }
+
+    .admin-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .admin-form__group {
+      margin-bottom: var(--space-md);
+    }
+
+    .admin-form__label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: 0.03em;
+    }
+
+    .admin-form__input,
+    .admin-form__textarea,
+    .admin-form__file {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      border: 1px solid var(--border);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s var(--ease-out);
+    }
+
+    .admin-form__input:focus,
+    .admin-form__textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .admin-form__textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .admin-form__file {
+      padding: 10px 14px;
+    }
+
+    .admin-list {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .admin-list__empty {
+      text-align: center;
+      padding: var(--space-xl);
+      border: 1px dashed var(--border);
+      font-size: 14px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body class="page-admin">
+  <div class="admin-gate" id="admin-gate">
+    <div class="admin-gate__box">
+      <div class="admin-gate__lock">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="12" y="20" width="24" height="20" rx="2"/>
+          <path d="M16 20V14c0-4.4 3.6-8 8-8s8 3.6 8 8v6"/>
+          <circle cx="24" cy="32" r="2"/>
+          <line x1="24" y1="34" x2="24" y2="37"/>
+        </svg>
+      </div>
+      <h2 class="admin-gate__title">Admin access</h2>
+      <p class="admin-gate__sub">Enter the admin password</p>
+      <input type="password" class="admin-gate__input" id="admin-password" placeholder="Password" autocomplete="off">
+      <p class="admin-gate__error" id="admin-error"></p>
+      <button class="btn btn--primary" id="admin-unlock" style="width: 100%;">Unlock</button>
+    </div>
+  </div>
+
+  <div class="admin-content" id="admin-content">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="nav__title">Gaza Fundraising Cause</a>
+      <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__links">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="proof.html" class="nav__link">Proof</a></li>
+        <li><a href="donate.html" class="nav__link nav__donate">Donate now</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section class="page-hero" id="hero-admin">
+        <div class="page-hero__content">
+          <p class="section__label">Admin</p>
+          <h1 class="heading-large">Manage Proof</h1>
+        </div>
+      </section>
+
+      <section class="section" id="admin-upload">
+        <p class="section__label fade-up">Upload new proof</p>
+        <div class="admin-form fade-up fade-up--delay-1">
+          <div class="admin-form__group">
+            <label class="admin-form__label" for="proof-date">Date of ride</label>
+            <input type="date" class="admin-form__input" id="proof-date">
+          </div>
+          <div class="admin-form__group">
+            <label class="admin-form__label" for="proof-caption">Caption</label>
+            <textarea class="admin-form__textarea" id="proof-caption" placeholder="Where did you ride? How far?"></textarea>
+          </div>
+          <div class="admin-form__group">
+            <label class="admin-form__label" for="proof-file">Photo or video</label>
+            <input type="file" class="admin-form__file" id="proof-file" accept="image/*,video/*">
+          </div>
+          <button class="btn btn--primary" id="proof-submit">Upload proof</button>
+        </div>
+      </section>
+
+      <section class="section section--light-gray" id="admin-proofs">
+        <p class="section__label fade-up">Uploaded proofs</p>
+        <div class="admin-list fade-up fade-up--delay-1">
+          <div class="admin-list__empty">No proofs uploaded yet.</div>
+        </div>
+      </section>
+    </main>
+
+    <div class="footer-bar">
+      <div class="footer-bar__text">Donate today. Change lives.</div>
+    </div>
+
+    <footer class="footer">
+      <span>Gaza Fundraising Cause. Woodhouse students. 2026.</span>
+      <div class="footer__links">
+        <a href="https://instagram.com/gaza_fundraising_cause_whsa" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.justgiving.com/page/gaza-fundraising-cause" target="_blank" rel="noopener noreferrer">JustGiving</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      var gate = document.getElementById('admin-gate');
+      var content = document.getElementById('admin-content');
+      var passwordInput = document.getElementById('admin-password');
+      var errorEl = document.getElementById('admin-error');
+      var unlockBtn = document.getElementById('admin-unlock');
+      var password = 'pakiunited';
+
+      function checkPassword() {
+        if (passwordInput.value === password) {
+          gate.classList.add('admin-gate--hidden');
+          content.classList.add('admin-content--visible');
+          errorEl.textContent = '';
+        } else {
+          errorEl.textContent = 'Incorrect password';
+          passwordInput.value = '';
+          passwordInput.focus();
+        }
+      }
+
+      unlockBtn.addEventListener('click', checkPassword);
+      passwordInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') checkPassword();
+      });
+
+      passwordInput.focus();
+    })();
+  </script>
+</body>
+</html>

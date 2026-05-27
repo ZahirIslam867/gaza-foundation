@@ -1656,6 +1656,186 @@ h1, h2, h3, h4 {
   z-index: 1;
 }
 
+/* ========== Proof Page ========== */
+
+.page-proof {
+  background: var(--bg);
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+}
+
+.stat-card {
+  text-align: center;
+  padding: var(--space-lg) var(--space-sm);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.stat-card__number {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 5vw, 52px);
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+
+.stat-card__unit {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.stat-card__label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .proof-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .proof-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.proof-card {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg) var(--space-md);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  transition: border-color 0.2s var(--ease-out), transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+}
+
+.proof-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.proof-card--upload {
+  border: 2px dashed var(--border);
+  cursor: pointer;
+  background: rgba(206, 17, 38, 0.02);
+}
+
+.proof-card--upload:hover {
+  border-color: var(--accent);
+  background: rgba(206, 17, 38, 0.04);
+}
+
+.proof-card__plus {
+  color: var(--muted);
+  transition: color 0.2s var(--ease-out);
+}
+
+.proof-card--upload:hover .proof-card__plus {
+  color: var(--accent);
+}
+
+.proof-card__plus svg {
+  display: block;
+  stroke: currentColor;
+  fill: none;
+}
+
+.proof-card__upload-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.proof-card__upload-sub {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 200px;
+}
+
+.proof-card--empty {
+  border: 1px dashed rgba(26, 26, 26, 0.08);
+  cursor: default;
+}
+
+.proof-card__placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(26, 26, 26, 0.04);
+}
+
+.proof-card__empty-text {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.proof-card__nothing {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.proof-card__nothing-sub {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Proof page — light nav (same default as home) */
+.page-proof .nav {
+  background: rgba(247, 245, 240, 0.95);
+  border-bottom: 1px solid var(--border);
+}
+
+.page-proof .nav__title,
+.page-proof .nav__link {
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proof-card {
+    transition: none;
+  }
+
+  .proof-card:hover {
+    transform: none;
+  }
+}
+
 /* ========== Page Heroes (About, Donate) ========== */
 
 .page-hero {
