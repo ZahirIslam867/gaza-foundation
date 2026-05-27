@@ -124,6 +124,9 @@ function initSimpleCounters() {
 function initFlipCounters() {
   var raisedEl = document.querySelector('[data-flip="raised"]');
   var cycledEl = document.querySelector('[data-flip="cycled"]');
+  if (!raisedEl && !cycledEl) return;
+
+  window.__flipData = window.__flipData || {};
 
   function buildFlipDigit(digit) {
     var container = document.createElement('span');
@@ -156,7 +159,7 @@ function initFlipCounters() {
     }, 500);
   }
 
-  function initFlip(el, targetValue) {
+  function initFlip(el, key, targetValue) {
     if (!el) return;
     var digits = [];
     var str = targetValue.toString();
@@ -169,6 +172,8 @@ function initFlipCounters() {
     }
     el.textContent = '';
     el.appendChild(container);
+
+    __flipData[key] = { el: el, digits: digits, container: container };
 
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -188,6 +193,35 @@ function initFlipCounters() {
     observer.observe(el);
   }
 
+  window.updateFlipCounter = function (key, newValue) {
+    var data = window.__flipData && window.__flipData[key];
+    if (!data) return;
+    var str = newValue.toString();
+    var digits = data.digits;
+    var container = data.container;
+
+    if (str.length !== digits.length) {
+      container.innerHTML = '';
+      digits = [];
+      for (var i = 0; i < str.length; i++) {
+        var fd = buildFlipDigit(str[i]);
+        container.appendChild(fd);
+        digits.push(fd);
+      }
+      data.digits = digits;
+    }
+
+    for (var i = 0; i < digits.length; i++) {
+      (function (idx, dig) {
+        setTimeout(function () {
+          setDigitValue(dig, str[idx]);
+        }, idx * 80);
+      })(i, digits[i]);
+    }
+  };
+
+  if (raisedEl) initFlip(raisedEl, 'raised', AMOUNT_RAISED);
+  if (cycledEl) initFlip(cycledEl, 'cycled', KM_CYCLED);
 }
 
 // =============================================================================

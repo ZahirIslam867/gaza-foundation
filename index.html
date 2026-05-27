@@ -245,7 +245,8 @@
       .then(function (r) { return r.json(); })
       .then(function (data) {
         if (data.totalAmount > 0 && raisedEl) {
-          raisedEl.textContent = data.totalAmount;
+          if (window.updateFlipCounter) window.updateFlipCounter('raised', data.totalAmount);
+          else raisedEl.textContent = data.totalAmount;
         }
         if (data.targetAmount > 0 && goalEl) {
           goalEl.textContent = data.targetAmount;
@@ -255,7 +256,9 @@
           fillEl.style.width = pct + '%';
         }
         if (cycledEl) {
-          cycledEl.textContent = Math.round(data.totalAmount * (59 / 100));
+          var cycled = Math.round(data.totalAmount * (59 / 100));
+          if (window.updateFlipCounter) window.updateFlipCounter('cycled', cycled);
+          else cycledEl.textContent = cycled;
         }
         if (data.recentDonations && data.recentDonations.length > 0 && donationsEl && listEl) {
           donationsEl.style.display = 'block';
