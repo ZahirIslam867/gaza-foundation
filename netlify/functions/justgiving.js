@@ -28,7 +28,6 @@ exports.handler = async function () {
       headers: { 'User-Agent': 'Mozilla/5.0' },
     });
     var html = await res.text();
-    var rsc = decodeRsc(html);
 
     // Donation summary — totalAmount is a float in pounds (e.g. 618.24)
     var summaryMatch = html.match(
@@ -41,21 +40,24 @@ exports.handler = async function () {
     var targetMatch = html.match(/\\"targetAmount\\":(\d+)/);
     var targetAmount = targetMatch ? parseInt(targetMatch[1], 10) : null;
 
-    // Recent donations from decoded RSC
-    // Format: "amount":{"value":3750,"currencyCode":"GBP"},"displayName":"NAME","avatar":"","message":"MSG"
+    // Recent donations — extract from the \"nodes\":[{...}] donation array
     var donations = [];
-    var seen = {};
-    var donorPat = /"amount":\{"value":(\d+)[^}]+"displayName":"([^"]+)"[^}]+"message":"([^"]*)"/g;
-    var m;
-    while ((m = donorPat.exec(rsc)) !== null) {
-      var key = m[2] + '|' + m[3];
-      if (!seen[key]) {
-        seen[key] = true;
-        donations.push({
-          displayName: m[2],
-          message: m[3],
-          amount: parseInt(m[1], 10), // in pence (3750 = £37.50)
-        });
+    var nodesStart = html.indexOf('\\"nodes\\":[{\\"id\\":\\"RG9uYXRpb');
+    if (nodesStart >= 0) {
+      var section = html.substring(nodesStart);
+      var donorPat = /\\"id\\":\\"(?:RG9uYXRpb[^"]+|[a-f0-9-]{36})\\"[\s\S]*?\\"amount\\":\{\\"value\\":(\d+)[\s\S]*?\\"displayName\\":\\"([^"]+)\\"[\s\S]*?\\"message\\":\\"([^"]*)\\"/g;
+      var seen = {};
+      var m;
+      while ((m = donorPat.exec(section)) !== null) {
+        var key = m[2] + '|' + m[3];
+        if (!seen[key]) {
+          seen[key] = true;
+          donations.push({
+            displayName: m[2],
+            message: m[3],
+            amount: parseInt(m[1], 10), // in pence (15000 = £150.00)
+          });
+        }
       }
     }
 
