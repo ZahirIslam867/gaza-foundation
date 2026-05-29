@@ -30,46 +30,32 @@ exports.handler = async function () {
     var html = await res.text();
     var rsc = decodeRsc(html);
 
-    // Donation summary (escaped quotes in RSC payload)
+    // Donation summary — totalAmount is a float in pounds (e.g. 618.24)
     var summaryMatch = html.match(
-      /\\"donationSummary\\":\{\\"totalAmount\\":(\d+),\\"aggregatedDonationsCount\\":(\d+)\}/
+      /\\"donationSummary\\":\{\\"totalAmount\\":([\d.]+),\\"aggregatedDonationsCount\\":(\d+)\}/
     );
-    var totalAmount = summaryMatch ? parseInt(summaryMatch[1], 10) : 0;
+    var totalAmount = summaryMatch ? Math.round(parseFloat(summaryMatch[1], 10)) : 0;
     var donationCount = summaryMatch ? parseInt(summaryMatch[2], 10) : 0;
 
-    // Target amount
+    // Target amount (integer pounds, e.g. 2000)
     var targetMatch = html.match(/\\"targetAmount\\":(\d+)/);
     var targetAmount = targetMatch ? parseInt(targetMatch[1], 10) : null;
 
-    // Value refs from decoded RSC
-    var refs = {};
-    var refPat = /(\w+):\{"value":(\d+)/g;
-    var m;
-    while ((m = refPat.exec(rsc)) !== null) refs[m[1]] = parseInt(m[2], 10);
-
-    // Recent donations (from decoded RSC with amounts)
+    // Recent donations from decoded RSC
+    // Format: "amount":{"value":3750,"currencyCode":"GBP"},"displayName":"NAME","avatar":"","message":"MSG"
     var donations = [];
     var seen = {};
-
-    // Pattern: "amount":"$XX","giftAidAmount":"$YY","displayName":"NAME","avatar":"","message":"MSG"
-    var refDonorPat = /"amount":"\$(\w+)"[^}]+"displayName":"([^"]+)"[^}]+"message":"([^"]*)"/g;
-    while ((m = refDonorPat.exec(rsc)) !== null) {
+    var donorPat = /"amount":\{"value":(\d+)[^}]+"displayName":"([^"]+)"[^}]+"message":"([^"]*)"/g;
+    var m;
+    while ((m = donorPat.exec(rsc)) !== null) {
       var key = m[2] + '|' + m[3];
       if (!seen[key]) {
         seen[key] = true;
-        var amt = refs[m[1]] || 0;
-        donations.push({ displayName: m[2], message: m[3], amount: amt });
-      }
-    }
-
-    // Pattern: "amount":null, ... "displayName":"NAME",...,"message":"MSG"
-    // Only add if not already found with amount
-    var nullDonorPat = /"amount":null[^}]+"displayName":"([^"]+)"[^}]+"message":"([^"]*)"/g;
-    while ((m = nullDonorPat.exec(rsc)) !== null) {
-      var key = m[1] + '|' + m[2];
-      if (!seen[key]) {
-        seen[key] = true;
-        donations.push({ displayName: m[1], message: m[2], amount: 0 });
+        donations.push({
+          displayName: m[2],
+          message: m[3],
+          amount: parseInt(m[1], 10), // in pence (3750 = £37.50)
+        });
       }
     }
 
